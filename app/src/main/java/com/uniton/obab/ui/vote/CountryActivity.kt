@@ -18,6 +18,7 @@ import com.bumptech.glide.load.resource.gif.GifDrawable
 import com.bumptech.glide.request.RequestListener
 import com.uniton.obab.R
 import com.uniton.obab.databinding.ActivityCountryBinding
+import com.uniton.obab.model.VoteInformation
 import com.uniton.obab.ui.VoteCompleteActivity
 import javax.sql.DataSource
 
@@ -48,7 +49,8 @@ class CountryActivity : AppCompatActivity() {
             layoutWestern.isSelected = false
             layoutChinese.isSelected = false
             layoutJapanese.isSelected = false
-            currentSelected = 1
+            currentSelected = 0
+            changeActivity()
         }
 
         layoutWestern.setOnClickListener {
@@ -56,7 +58,8 @@ class CountryActivity : AppCompatActivity() {
             layoutWestern.isSelected = true
             layoutChinese.isSelected = false
             layoutJapanese.isSelected = false
-            currentSelected = 2
+            currentSelected = 1
+            changeActivity()
         }
 
         layoutChinese.setOnClickListener {
@@ -64,7 +67,8 @@ class CountryActivity : AppCompatActivity() {
             layoutWestern.isSelected = false
             layoutChinese.isSelected = true
             layoutJapanese.isSelected = false
-            currentSelected = 3
+            currentSelected = 2
+            changeActivity()
         }
 
         layoutJapanese.setOnClickListener {
@@ -72,7 +76,8 @@ class CountryActivity : AppCompatActivity() {
             layoutWestern.isSelected = false
             layoutChinese.isSelected = false
             layoutJapanese.isSelected = true
-            currentSelected = 4
+            currentSelected = 3
+            changeActivity()
         }
 
         btnDone.setOnClickListener {
@@ -83,8 +88,11 @@ class CountryActivity : AppCompatActivity() {
 
     private fun changeActivity() {
         val isCaptain = intent.getBooleanExtra("isCaptain", false)
-        val intent = Intent(this, VoteCompleteActivity::class.java)
-        intent.putExtra("isCaptain", isCaptain)
+        val roomNo = intent.getStringExtra("roomNo")
+
+        val intent = Intent(this, TypeActivity::class.java)
+        val voteInformation = VoteInformation(isReader = isCaptain, roomNo = roomNo ?: "", countryId = currentSelected)
+        intent.putExtra("voteInfo", voteInformation)
         startActivity(intent)
         finish()
     }
@@ -102,8 +110,6 @@ class CountryActivity : AppCompatActivity() {
             }
 
         }
-
-        timer.start()
     }
 
     private fun initGif() {
@@ -143,14 +149,14 @@ class CountryActivity : AppCompatActivity() {
         layoutChinese.isSelected = false
         layoutJapanese.isSelected = false
 
-        val range = (1..4)
+        val range = (0..3)
         currentSelected = range.random()
 
         when (currentSelected) {
-            1 -> layoutKorean.isSelected = true
-            2 -> layoutWestern.isSelected = true
-            3 -> layoutChinese.isSelected = true
-            4 -> layoutJapanese.isSelected = true
+            0 -> layoutKorean.isSelected = true
+            1 -> layoutWestern.isSelected = true
+            2 -> layoutChinese.isSelected = true
+            3 -> layoutJapanese.isSelected = true
         }
     }
 
@@ -176,6 +182,16 @@ class CountryActivity : AppCompatActivity() {
             .setOnClickListener {
                 exitCloseDialog.dismiss()
             }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        timer.start()
+    }
+
+    override fun onStop() {
+        timer.cancel()
+        super.onStop()
     }
 
 }
