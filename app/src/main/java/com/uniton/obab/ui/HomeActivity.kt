@@ -103,4 +103,18 @@ class HomeActivity : AppCompatActivity() {
             Toast.makeText(applicationContext, "한번더 누르시면 앱이 종료됩니다", Toast.LENGTH_SHORT).show()
         }
     }
+
+    override fun onResume() {
+        super.onResume()
+        binding.autoRvFirst.smoothScrollToPosition(Int.MAX_VALUE)
+        binding.autoRvSecond.smoothScrollToPosition(Int.MAX_VALUE)
+        binding.autoRvThird.smoothScrollToPosition(Int.MAX_VALUE)
+    }
+
+    override fun onStop() {
+        binding.autoRvFirst.stopScroll()
+        binding.autoRvSecond.stopScroll()
+        binding.autoRvThird.stopScroll()
+        super.onStop()
+    }
 }
