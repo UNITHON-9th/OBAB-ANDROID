@@ -2,7 +2,7 @@
     <string name="app_name">오밥</string>
 
     <!--  HOME  -->
-    <string name="app_name_home">오 밥</string>
+    <string name="app_name_short">오 밥</string>
     <string name="app_name_full">오늘의 밥</string>
     <string name="create_room">방 생성하기</string>
     <string name="enter_room">참가하기</string>
