@@ -19,7 +19,7 @@ class SplashActivity : AppCompatActivity() {
 
     }
 
-    fun changeActivity() {
+    private fun changeActivity() {
         val intent = Intent(this, HomeActivity::class.java)
         startActivity(intent)
     }

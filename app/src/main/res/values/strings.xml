@@ -5,5 +5,12 @@
     <string name="app_name_short">오 밥</string>
     <string name="app_name_full">오늘의 밥</string>
     <string name="create_room">방 생성하기</string>
-    <string name="enter_room">참가하기</string>
+    <string name="enter">참가하기</string>
+
+    <!--  ENTER ROOM  -->
+    <string name="enter_room">방 참가하기</string>
+    <string name="enter_code">방 코드 입력</string>
+    <string name="enter_code_description">코드 입력을 완료하시면 바로 투표에 참가됩니다!</string>
+    <string name="place_holder_enter_code">방 코드 입력</string>
+    <string name="button_enter">참가</string>
 </resources>
