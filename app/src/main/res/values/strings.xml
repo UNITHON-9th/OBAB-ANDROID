@@ -21,13 +21,14 @@
     <string name="number_participants">참여 인원</string>
     <string name="create_room_description">투표에 참여할 인원을 입력해주세요!</string>
     <string name="button_create_room">방 만들기</string>
-    <string name="placeholder_number_participants">참여 인원 입력</string>
+    <string name="placeholder_number_participants">입력</string>
+
+    <!--  CREATE ROOM COMPLETE  -->
     <string name="complete_enter_code">방 참여 코드</string>
     <string name="create_room_complete_description">방 참여 코드를 친구들에게 공유하세요~!!!</string>
     <string name="start_button_description">투표 시작 후에도 참여 코드 확인이 가능해요</string>
     <string name="start_vote">투표 시작하기</string>
-
-    <!--  CREATE ROOM COMPLETE  -->
+    <string name="number_participants_unit">명</string>
 
 
 </resources>
