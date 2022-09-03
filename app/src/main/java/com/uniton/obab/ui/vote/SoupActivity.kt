@@ -58,7 +58,7 @@ class SoupActivity : AppCompatActivity() {
 
     private fun changeActivity() {
         val voteInformation = intent.getParcelableExtra<VoteInformation>("voteInfo")
-        val newInformation = voteInformation?.copy(isSpicy = currentSelected)
+        val newInformation = voteInformation?.copy(isSoup = currentSelected)
         val intent = Intent(this, HotActivity::class.java)
         intent.putExtra("voteInfo", newInformation)
         startActivity(intent)

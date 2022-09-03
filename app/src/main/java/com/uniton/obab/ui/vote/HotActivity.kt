@@ -59,9 +59,6 @@ class HotActivity : AppCompatActivity() {
 
     private fun changeActivity() {
         val voteInformation = intent.getParcelableExtra<VoteInformation>("voteInfo")
-
-        Log.w("TAG", "$voteInformation")
-
         val newInformation = voteInformation?.copy(isHot = currentSelected)
         val intent = Intent(this, VoteCompleteActivity::class.java)
         intent.putExtra("voteInfo", newInformation)
