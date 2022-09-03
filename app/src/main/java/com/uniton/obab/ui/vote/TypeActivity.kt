@@ -96,8 +96,6 @@ class TypeActivity : AppCompatActivity() {
             }
 
         }
-
-        timer.start()
     }
 
     private fun initGif() {
@@ -143,5 +141,15 @@ class TypeActivity : AppCompatActivity() {
             .setOnClickListener {
                 exitCloseDialog.dismiss()
             }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        timer.start()
+    }
+
+    override fun onStop() {
+        timer.cancel()
+        super.onStop()
     }
 }

@@ -77,8 +77,6 @@ class SpicyActivity : AppCompatActivity() {
             }
 
         }
-
-        timer.start()
     }
 
     private fun initGif() {
@@ -120,5 +118,15 @@ class SpicyActivity : AppCompatActivity() {
             .setOnClickListener {
                 exitCloseDialog.dismiss()
             }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        timer.start()
+    }
+
+    override fun onStop() {
+        timer.cancel()
+        super.onStop()
     }
 }

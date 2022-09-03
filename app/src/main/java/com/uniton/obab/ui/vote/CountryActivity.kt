@@ -98,8 +98,6 @@ class CountryActivity : AppCompatActivity() {
             }
 
         }
-
-        timer.start()
     }
 
     private fun initGif() {
@@ -145,6 +143,16 @@ class CountryActivity : AppCompatActivity() {
             .setOnClickListener {
                 exitCloseDialog.dismiss()
             }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        timer.start()
+    }
+
+    override fun onStop() {
+        timer.cancel()
+        super.onStop()
     }
 
 }
