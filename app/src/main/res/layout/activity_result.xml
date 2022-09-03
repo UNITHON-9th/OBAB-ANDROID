@@ -714,7 +714,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="8dp"
-                    android:text="50% 국물이 없는 음"
+                    android:text="50% 국물이 없는 음식"
                     android:textColor="@color/gray7"
                     android:textSize="14sp"
                     app:layout_constraintRight_toLeftOf="@id/chip_not_soup"
@@ -855,7 +855,7 @@
 
 
     <Button
-        android:id="@+id/btn_random"
+        android:id="@+id/btn_done"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_margin="16dp"
