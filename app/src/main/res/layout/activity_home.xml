@@ -5,31 +5,31 @@
     android:layout_height="match_parent">
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/iv_logo"
+        android:id="@+id/home_iv_logo"
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:src="@drawable/ic_logo"
-        app:layout_constraintBottom_toTopOf="@id/tv_full_name"
+        app:layout_constraintBottom_toTopOf="@id/home_tv_full_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_full_name"
+        android:id="@+id/home_tv_full_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="17dp"
         android:text="@string/app_name_full"
         android:textColor="@color/gray2"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@id/tv_name"
+        app:layout_constraintBottom_toTopOf="@id/home_tv_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_logo" />
+        app:layout_constraintTop_toBottomOf="@+id/home_iv_logo" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_name"
+        android:id="@+id/home_tv_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -37,13 +37,13 @@
         android:textColor="@color/black"
         android:textSize="32sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/ll_button"
+        app:layout_constraintBottom_toTopOf="@id/home_layout_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_full_name" />
+        app:layout_constraintTop_toBottomOf="@+id/home_tv_full_name" />
 
     <LinearLayout
-        android:id="@+id/ll_button"
+        android:id="@+id/home_layout_button"
         android:layout_width="match_parent"
         android:layout_height="132dp"
         android:layout_marginTop="21dp"
@@ -52,10 +52,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_name">
+        app:layout_constraintTop_toBottomOf="@+id/home_tv_name">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layout_create"
+            android:id="@+id/home_layout_create"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -64,18 +64,18 @@
             android:background="@drawable/bg_option_unseleted">
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/iv_create"
+                android:id="@+id/home_iv_create"
                 android:layout_width="52dp"
                 android:layout_height="52dp"
                 android:layout_marginTop="24dp"
                 android:src="@drawable/ic_logo"
-                app:layout_constraintBottom_toTopOf="@id/tv_create"
+                app:layout_constraintBottom_toTopOf="@id/home_tv_create"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_create"
+                android:id="@+id/home_tv_create"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -87,12 +87,12 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/iv_create" />
+                app:layout_constraintTop_toBottomOf="@id/home_iv_create" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layout_enter"
+            android:id="@+id/home_layout_enter"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -102,18 +102,18 @@
 
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/iv_enter"
+                android:id="@+id/home_iv_enter"
                 android:layout_width="52dp"
                 android:layout_height="52dp"
                 android:layout_marginTop="24dp"
                 android:src="@drawable/ic_logo"
-                app:layout_constraintBottom_toTopOf="@id/tv_enter"
+                app:layout_constraintBottom_toTopOf="@id/home_tv_enter"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_enter"
+                android:id="@+id/home_tv_enter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -125,7 +125,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/iv_enter" />
+                app:layout_constraintTop_toBottomOf="@id/home_iv_enter" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
