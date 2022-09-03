@@ -26,6 +26,11 @@
             android:name=".ui.SplashActivity"
             android:exported="true"
             android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity android:name=".ui.vote.CountryActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
