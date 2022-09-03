@@ -205,7 +205,7 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:id="@+id/btn_random"/>
+        android:id="@+id/btn_done"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

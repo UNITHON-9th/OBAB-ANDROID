@@ -1,12 +1,19 @@
 package com.uniton.obab.ui.vote
 
+import android.app.Dialog
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.util.Log
+import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.AppCompatTextView
+import com.uniton.obab.R
 import com.uniton.obab.databinding.ActivityCountryBinding
 import com.uniton.obab.ui.VoteCompleteActivity
+
 
 class CountryActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCountryBinding
@@ -60,7 +67,7 @@ class CountryActivity : AppCompatActivity() {
             currentSelected = 4
         }
 
-        btnRandom.setOnClickListener {
+        btnDone.setOnClickListener {
 //            chooseRandomOption()
             changeActivity()
         }
@@ -108,4 +115,29 @@ class CountryActivity : AppCompatActivity() {
             4 -> layoutJapanese.isSelected = true
         }
     }
+
+    override fun onBackPressed() {
+        showExitDialog()
+    }
+
+    private fun showExitDialog() {
+        val exitCloseDialog = Dialog(this)
+        exitCloseDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT));
+        exitCloseDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        exitCloseDialog.setContentView(R.layout.dialog_exit)
+
+        exitCloseDialog.show()
+
+        exitCloseDialog.findViewById<AppCompatTextView>(R.id.dialog_exit_tv_button_exit)
+            .setOnClickListener {
+                exitCloseDialog.dismiss()
+                finish()
+            }
+
+        exitCloseDialog.findViewById<AppCompatTextView>(R.id.dialog_exit_tv_button_continue)
+            .setOnClickListener {
+                exitCloseDialog.dismiss()
+            }
+    }
+
 }
