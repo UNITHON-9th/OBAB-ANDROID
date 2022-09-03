@@ -32,7 +32,6 @@ class CreateRoomActivity : AppCompatActivity() {
         binding.createRoomIvBack.setOnClickListener {
             finish()
         }
-
     }
 
     private fun changeCompleteActivity() {
