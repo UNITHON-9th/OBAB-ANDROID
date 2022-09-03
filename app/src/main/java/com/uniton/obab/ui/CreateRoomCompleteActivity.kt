@@ -4,19 +4,11 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Intent
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.uniton.obab.R
-import com.uniton.obab.databinding.ActivityCreateRoomBinding
 import com.uniton.obab.databinding.ActivityCreateRoomCompleteBinding
-import com.uniton.obab.model.RoomRepository
-import com.uniton.obab.model.RoomRequest
-import com.uniton.obab.network.room.RoomService
-import com.uniton.obab.network.room.RoomsCallback
 import com.uniton.obab.ui.vote.CountryActivity
-import java.util.regex.Pattern
 
 class CreateRoomCompleteActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCreateRoomCompleteBinding

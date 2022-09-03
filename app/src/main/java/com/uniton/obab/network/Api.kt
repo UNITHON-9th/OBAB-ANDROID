@@ -1,8 +1,6 @@
 package com.uniton.obab.network
 
-import com.uniton.obab.model.Repository
-import com.uniton.obab.model.RoomRepository
-import com.uniton.obab.model.RoomRequest
+import com.uniton.obab.model.*
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -17,5 +15,7 @@ interface Api {
     ): Call<Repository>
 
     @POST("/rooms")
-    fun postRooms(@Body params: RoomRequest): Call<RoomRepository>
+    fun postRooms(@Body params: CreateRoomRequest): Call<CreateRoomRepository>
+    @POST("/rooms/enter")
+    fun postEnterRooms(@Body params: EnterRoomRequest): Call<EnterRoomRepository>
 }

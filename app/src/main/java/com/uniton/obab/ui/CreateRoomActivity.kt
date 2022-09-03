@@ -8,13 +8,13 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.uniton.obab.R
 import com.uniton.obab.databinding.ActivityCreateRoomBinding
-import com.uniton.obab.model.RoomRepository
-import com.uniton.obab.model.RoomRequest
-import com.uniton.obab.network.room.RoomService
-import com.uniton.obab.network.room.RoomsCallback
+import com.uniton.obab.model.CreateRoomRepository
+import com.uniton.obab.model.CreateRoomRequest
+import com.uniton.obab.network.room.create.CreateRoomService
+import com.uniton.obab.network.room.create.CreateRoomCallback
 import java.util.regex.Pattern
 
-class CreateRoomActivity : AppCompatActivity(), RoomsCallback {
+class CreateRoomActivity : AppCompatActivity(), CreateRoomCallback {
     private lateinit var binding: ActivityCreateRoomBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -79,15 +79,15 @@ class CreateRoomActivity : AppCompatActivity(), RoomsCallback {
 
 
     private fun tryPostRooms(totalCount: Int) {
-        val roomRequest = RoomRequest(totalCount = totalCount)
-        RoomService(this).postRooms(roomRequest)
+        val createRoomRequest = CreateRoomRequest(totalCount = totalCount)
+        CreateRoomService(this).postRooms(createRoomRequest)
     }
 
-    override fun onSuccess(result: RoomRepository) {
+    override fun onSuccess(result: CreateRoomRepository) {
         changeCompleteActivity(result.data.inviteCode)
     }
 
-    override fun onFailure(result: RoomRepository) {
+    override fun onFailure(result: CreateRoomRepository) {
     }
 
 }
