@@ -36,8 +36,7 @@
             android:exported="false" />
         <activity
             android:name=".ui.HomeActivity"
-            android:screenOrientation="portrait"
-            android:alwaysRetainTaskState="true"/>
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ui.SplashActivity"
             android:exported="true"
@@ -52,9 +51,7 @@
 
         <activity
             android:name=".ui.vote.CountryActivity"
-            android:screenOrientation="portrait"
-            android:exported="false"/>
-
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.EnterRoomActivity"
             android:screenOrientation="portrait"
