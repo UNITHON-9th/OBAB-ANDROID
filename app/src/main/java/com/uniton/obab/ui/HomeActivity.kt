@@ -77,16 +77,17 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun initListener() = with(binding) {
-
+        btnEnter.setOnClickListener { intentEnterRoomActivity() }
+        btnCreate.setOnClickListener { intentCreateRoomActivity() }
     }
 
-    private fun changeEnterRoomActivity() {
+    private fun intentEnterRoomActivity() {
         val intent = Intent(this, EnterRoomActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT)
         startActivity(intent)
     }
 
-    private fun changeCreateRoomActivity() {
+    private fun intentCreateRoomActivity() {
         val intent = Intent(this, CreateRoomActivity::class.java)
         startActivity(intent)
     }
