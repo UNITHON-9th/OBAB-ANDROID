@@ -42,12 +42,14 @@ class SpicyActivity : AppCompatActivity() {
             layoutSpicy.isSelected = true
             layoutNotSpicy.isSelected = false
             currentSelected = true
+            changeActivity()
         }
 
         layoutNotSpicy.setOnClickListener {
             layoutSpicy.isSelected = false
             layoutNotSpicy.isSelected = true
             currentSelected = false
+            changeActivity()
         }
 
         btnDone.setOnClickListener {

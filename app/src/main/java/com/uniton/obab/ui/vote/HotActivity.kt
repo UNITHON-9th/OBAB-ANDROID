@@ -42,12 +42,14 @@ class HotActivity : AppCompatActivity() {
             layoutHot.isSelected = true
             layoutCold.isSelected = false
             currentSelected = true
+            changeActivity()
         }
 
         layoutCold.setOnClickListener {
             layoutHot.isSelected = false
             layoutCold.isSelected = true
             currentSelected = false
+            changeActivity()
         }
 
         btnDone.setOnClickListener {

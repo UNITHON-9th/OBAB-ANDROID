@@ -43,6 +43,7 @@ class CountryActivity : AppCompatActivity() {
             layoutChinese.isSelected = false
             layoutJapanese.isSelected = false
             currentSelected = 0
+            changeActivity()
         }
 
         layoutWestern.setOnClickListener {
@@ -51,6 +52,7 @@ class CountryActivity : AppCompatActivity() {
             layoutChinese.isSelected = false
             layoutJapanese.isSelected = false
             currentSelected = 1
+            changeActivity()
         }
 
         layoutChinese.setOnClickListener {
@@ -59,6 +61,7 @@ class CountryActivity : AppCompatActivity() {
             layoutChinese.isSelected = true
             layoutJapanese.isSelected = false
             currentSelected = 2
+            changeActivity()
         }
 
         layoutJapanese.setOnClickListener {
@@ -67,6 +70,7 @@ class CountryActivity : AppCompatActivity() {
             layoutChinese.isSelected = false
             layoutJapanese.isSelected = true
             currentSelected = 3
+            changeActivity()
         }
 
         btnDone.setOnClickListener {

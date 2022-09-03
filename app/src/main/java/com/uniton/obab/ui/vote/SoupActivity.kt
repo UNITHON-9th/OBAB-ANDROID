@@ -41,12 +41,14 @@ class SoupActivity : AppCompatActivity() {
             layoutSoup.isSelected = true
             layoutNotSoup.isSelected = false
             currentSelected = true
+            changeActivity()
         }
 
         layoutNotSoup.setOnClickListener {
             layoutSoup.isSelected = false
             layoutNotSoup.isSelected = true
             currentSelected = false
+            changeActivity()
         }
 
         btnDone.setOnClickListener {
