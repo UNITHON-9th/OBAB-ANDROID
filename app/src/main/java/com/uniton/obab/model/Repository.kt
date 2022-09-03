@@ -19,7 +19,9 @@ data class CreateRoomRepository(
 
 data class CreateRoomData(
     @SerializedName("inviteCode")
-    val inviteCode: String
+    val inviteCode: String,
+    @SerializedName("roomNo")
+    val roomNo: String
 )
 
 data class EnterRoomRepository(

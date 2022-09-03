@@ -40,8 +40,10 @@ class CreateRoomCompleteActivity : AppCompatActivity() {
     }
 
     private fun changeActivity() {
+        val roomNo = intent.getStringExtra("roomNo")
         val intent = Intent(this, CountryActivity::class.java)
         intent.putExtra("isCaptain", true)
+        intent.putExtra("roomNo", roomNo)
         startActivity(intent)
         finish()
     }

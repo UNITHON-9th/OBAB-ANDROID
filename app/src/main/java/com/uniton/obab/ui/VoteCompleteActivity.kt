@@ -19,6 +19,7 @@ import com.uniton.obab.databinding.ActivityVoteCompleteBinding
 import com.uniton.obab.databinding.DialogCodeBinding
 import com.uniton.obab.databinding.DialogEarlyCloseBinding
 import com.uniton.obab.model.PersonalResultRepository
+import com.uniton.obab.model.VoteInformation
 import com.uniton.obab.network.survey.PersonalResultCallback
 import com.uniton.obab.network.survey.PersonalResultService
 
@@ -29,9 +30,21 @@ class VoteCompleteActivity : AppCompatActivity(), PersonalResultCallback {
         binding = ActivityVoteCompleteBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val isCaptain = intent.getBooleanExtra("isCaptain", false)
+        val deviceId = applicationContext.getSharedPreferences(
+            getString(R.string.app_name),
+            Context.MODE_PRIVATE
+        ).getString("FCM_TOKEN", "")
 
-        if (isCaptain) {
+        val voteInfo = intent.getParcelableExtra<VoteInformation>("voteInfo")
+        val isCaptain = voteInfo?.isReader
+
+
+        if (deviceId != null && voteInfo != null) {
+            tryGetPersonalResult(deviceId = deviceId, roomNo = voteInfo.roomNo)
+        }
+
+
+        if (isCaptain == true) {
             binding.voteCompleteLayoutButtonCaptain.isVisible = true
             binding.voteCompleteLayoutButtonNormal.isVisible = false
         } else {
@@ -52,16 +65,6 @@ class VoteCompleteActivity : AppCompatActivity(), PersonalResultCallback {
             changeHomeActivity()
         }
 
-        val deviceId = applicationContext.getSharedPreferences(
-            getString(R.string.app_name),
-            Context.MODE_PRIVATE
-        ).getString("FCM_TOKEN", "")
-
-//        val voteInfo =intent.getParcelableExtra<VoteInformation>("voteInfo")
-
-//        if (deviceId != null && voteInfo != null) {
-//            tryGetPersonalResult(deviceId = deviceId, roomNo = voteInfo.roomNo)
-//        }
 
     }
 
@@ -160,7 +163,7 @@ class VoteCompleteActivity : AppCompatActivity(), PersonalResultCallback {
         if (data.isSoup) binding.voteCompleteTvSpicy.text = "국물 음식"
         else binding.voteCompleteTvSpicy.text = "국물이 없는 음식"
 
-        if (data.isHot) binding.voteCompleteTvHot.text ="뜨거운 음식"
+        if (data.isHot) binding.voteCompleteTvHot.text = "뜨거운 음식"
         else binding.voteCompleteTvHot.text = "차가운 음식"
 
         binding.voteCompleteTvCompleteNumber.text = data.submitCount.toString()

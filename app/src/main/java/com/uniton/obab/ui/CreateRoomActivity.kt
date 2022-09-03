@@ -38,9 +38,10 @@ class CreateRoomActivity : AppCompatActivity(), CreateRoomCallback {
         }
     }
 
-    private fun changeCompleteActivity(inviteCode: String) {
+    private fun changeCompleteActivity(inviteCode: String, roomNo: String) {
         val intent = Intent(this, CreateRoomCompleteActivity::class.java)
         intent.putExtra("inviteCode", inviteCode)
+        intent.putExtra("roomNo", roomNo)
         startActivity(intent)
         finish()
     }
@@ -84,10 +85,11 @@ class CreateRoomActivity : AppCompatActivity(), CreateRoomCallback {
     }
 
     override fun onSuccess(result: CreateRoomRepository) {
-        changeCompleteActivity(result.data.inviteCode)
+        changeCompleteActivity(result.data.inviteCode, result.data.roomNo)
     }
 
     override fun onFailure(result: CreateRoomRepository) {
+        showToast("수리중 입니다...")
     }
 
 }

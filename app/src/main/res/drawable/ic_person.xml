@@ -5,12 +5,12 @@
     android:viewportHeight="48">
   <path
       android:pathData="M24,17.601m-9.6,0a9.6,9.6 0,1 1,19.2 0a9.6,9.6 0,1 1,-19.2 0"
-      android:fillColor="#212121"/>
+      android:fillColor="#ffffff"/>
   <group>
     <clip-path
         android:pathData="M4.8,4.8h38.4v38.4h-38.4z"/>
     <path
         android:pathData="M24,46.4m-16,0a16,16 0,1 1,32 0a16,16 0,1 1,-32 0"
-        android:fillColor="#212121"/>
+        android:fillColor="#ffffff"/>
   </group>
 </vector>

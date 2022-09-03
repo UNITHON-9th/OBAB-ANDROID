@@ -13,7 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class EnterRoomService(val enterRoomCallback: EnterRoomCallback) {
     companion object {
-        const val BASE_URL = "http://3.37.236.75:8080"
+        const val BASE_URL = "http://43.200.197.100:8080"
     }
 
     private val okHttpClient = OkHttpClient.Builder().build()

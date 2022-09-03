@@ -91,6 +91,7 @@ class EnterRoomActivity : AppCompatActivity(), EnterRoomCallback {
 
     override fun onFailure(result: EnterRoomRepository) {
         TODO("Not yet implemented")
+        showToast("수리중 입니다...")
     }
 
 }
