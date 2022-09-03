@@ -2,135 +2,89 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/home_iv_logo"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:src="@drawable/ic_logo"
-        app:layout_constraintBottom_toTopOf="@id/home_tv_full_name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/home_tv_full_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="17dp"
-        android:text="@string/app_name_full"
-        android:textColor="@color/gray2"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@id/home_tv_name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/home_iv_logo" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/home_tv_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/app_name_short"
-        android:textColor="@color/black"
-        android:textSize="32sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/home_layout_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/home_tv_full_name" />
-
-    <LinearLayout
-        android:id="@+id/home_layout_button"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/auto_rv_first"
         android:layout_width="match_parent"
-        android:layout_height="132dp"
-        android:layout_marginTop="21dp"
-        android:baselineAligned="false"
+        android:layout_height="100dp"
+        android:layout_marginTop="28dp"
+        android:backgroundTint="@color/black"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/home_tv_name">
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/home_layout_create"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="8dp"
-            android:layout_weight="1"
-            android:background="@drawable/bg_option_unselected">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/auto_rv_second"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/main_red"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/auto_rv_first" />
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/home_iv_create"
-                android:layout_width="52dp"
-                android:layout_height="52dp"
-                android:layout_marginTop="24dp"
-                android:src="@drawable/ic_logo"
-                app:layout_constraintBottom_toTopOf="@id/home_tv_create"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/auto_rv_third"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/black"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/auto_rv_second" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/home_tv_create"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="20dp"
-                android:text="@string/create_room"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/home_iv_create" />
+    <TextView
+        android:id="@+id/tv_home_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/auto_rv_third"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="20dp"
+        android:text="우리와 잘 어울리는\n오늘의 메뉴는?"
+        android:gravity="center"
+        android:lineHeight="40sp"
+        android:textStyle="bold"
+        android:textSize="32sp"/>
+    <TextView
+        android:id="@+id/tv_home_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_home_title"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="20dp"
+        android:text="취향 투표를 통해 메뉴를 추천해드려요"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="16sp"/>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:id="@+id/btn_enter"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/bg_main_btn"
+        android:elevation="0dp"
+        android:stateListAnimator="@null"
+        android:text="취향 투표 참가하기"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/btn_create"/>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/home_layout_enter"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="16dp"
-            android:layout_weight="1"
-            android:background="@drawable/bg_option_unselected">
-
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/home_iv_enter"
-                android:layout_width="52dp"
-                android:layout_height="52dp"
-                android:layout_marginTop="24dp"
-                android:src="@drawable/ic_logo"
-                app:layout_constraintBottom_toTopOf="@id/home_tv_enter"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/home_tv_enter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="20dp"
-                android:text="@string/enter_room"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/home_iv_enter" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    </LinearLayout>
+    <Button
+        android:id="@+id/btn_create"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/bg_main_btn"
+        android:elevation="0dp"
+        android:stateListAnimator="@null"
+        android:text="취향 투표 생성하기"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
