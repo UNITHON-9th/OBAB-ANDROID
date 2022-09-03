@@ -57,11 +57,11 @@ class VoteCompleteActivity : AppCompatActivity(), PersonalResultCallback {
             Context.MODE_PRIVATE
         ).getString("FCM_TOKEN", "")
 
-        val voteInfo =intent.getParcelableExtra<VoteInformation>("voteInfo")
+//        val voteInfo =intent.getParcelableExtra<VoteInformation>("voteInfo")
 
-        if (deviceId != null && voteInfo != null) {
-            tryGetPersonalResult(deviceId = deviceId, roomNo = voteInfo.roomNo)
-        }
+//        if (deviceId != null && voteInfo != null) {
+//            tryGetPersonalResult(deviceId = deviceId, roomNo = voteInfo.roomNo)
+//        }
 
     }
 
