@@ -12,6 +12,7 @@ import androidx.annotation.Nullable
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatTextView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.load.resource.gif.GifDrawable
 import com.bumptech.glide.request.RequestListener
@@ -131,6 +132,8 @@ class CountryActivity : AppCompatActivity() {
 
         Glide.with(this).asGif()
             .load(R.drawable.count)
+            .diskCacheStrategy(DiskCacheStrategy.NONE)// 디스크 캐시 저장 off
+            .skipMemoryCache(true)
             .listener(listener).into(binding.ivProgress)
     }
 
