@@ -28,17 +28,16 @@
             android:value="false" />
 
         <activity
-            android:name=".ui.vote.ResultActivity"
+            android:name=".ui.ResultActivity"
+            android:screenOrientation="portrait"
             android:exported="false"/>
         <activity
             android:name=".ui.SampleActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
-            android:exported="false" />
-        <activity
             android:name=".ui.HomeActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:alwaysRetainTaskState="true"/>
         <activity
             android:name=".ui.SplashActivity"
             android:exported="true"
@@ -53,6 +52,7 @@
 
         <activity
             android:name=".ui.vote.CountryActivity"
+            android:screenOrientation="portrait"
             android:exported="false"/>
 
         <activity

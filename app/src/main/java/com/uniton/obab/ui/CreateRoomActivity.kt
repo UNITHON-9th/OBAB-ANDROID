@@ -37,6 +37,7 @@ class CreateRoomActivity : AppCompatActivity() {
     private fun changeCompleteActivity() {
         val intent = Intent(this, CreateRoomCompleteActivity::class.java)
         startActivity(intent)
+        finish()
     }
 
     private fun checkActiveButton() {

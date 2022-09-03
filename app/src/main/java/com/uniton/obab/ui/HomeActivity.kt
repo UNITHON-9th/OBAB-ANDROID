@@ -25,6 +25,7 @@ class HomeActivity : AppCompatActivity() {
 
     private fun changeEnterRoomActivity() {
         val intent = Intent(this, EnterRoomActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT)
         startActivity(intent)
     }
 

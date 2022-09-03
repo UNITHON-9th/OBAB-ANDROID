@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.uniton.obab.R
 import com.uniton.obab.databinding.ActivityCreateRoomBinding
 import com.uniton.obab.databinding.ActivityCreateRoomCompleteBinding
+import com.uniton.obab.ui.vote.CountryActivity
 import java.util.regex.Pattern
 
 class CreateRoomCompleteActivity : AppCompatActivity() {
@@ -22,8 +23,11 @@ class CreateRoomCompleteActivity : AppCompatActivity() {
 
         binding.createRoomCompleteLayoutCode.setOnClickListener {
             showToast("초대코드가 클립보드에 복사되었습니다")
-            val clip = ClipData.newPlainText(getString(R.string.app_name), binding.createRoomCompleteTvCode.text)
-            val clipboard =  getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
+            val clip = ClipData.newPlainText(
+                getString(R.string.app_name),
+                binding.createRoomCompleteTvCode.text
+            )
+            val clipboard = getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
             clipboard.setPrimaryClip(clip)
         }
 
@@ -38,8 +42,10 @@ class CreateRoomCompleteActivity : AppCompatActivity() {
     }
 
     private fun changeActivity() {
-        val intent = Intent(this, VoteCompleteActivity::class.java)
+        val intent = Intent(this, CountryActivity::class.java)
+        intent.putExtra("isCaptain", true)
         startActivity(intent)
+        finish()
     }
 
     private fun showToast(message: String) {
