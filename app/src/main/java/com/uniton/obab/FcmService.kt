@@ -11,6 +11,7 @@ import android.util.Log
 import androidx.core.app.NotificationCompat
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
+import com.uniton.obab.ui.HomeActivity
 
 class FcmService : FirebaseMessagingService() {
 
@@ -40,7 +41,7 @@ class FcmService : FirebaseMessagingService() {
     }
 
     private fun sendNotification(messageBody: Map<String, String>) {
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, HomeActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         val pendingIntent = PendingIntent.getActivity(
             this, 0 /* Request code */, intent,

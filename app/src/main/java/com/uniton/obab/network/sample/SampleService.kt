@@ -1,7 +1,7 @@
 package com.uniton.obab.network.sample
 
 import com.uniton.obab.model.Repository
-import com.uniton.obab.network.GitHubApi
+import com.uniton.obab.network.Api
 import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Callback
@@ -23,8 +23,8 @@ class SampleService(val networkResult:SampleCallback) {
         .build()
 
     fun getRepositories(owner: String, repo: String) {
-        val gitHubApi = retrofit.create(GitHubApi::class.java)
-        gitHubApi.getRepositories(owner, repo).enqueue(
+        val api = retrofit.create(Api::class.java)
+        api.getRepositories(owner, repo).enqueue(
             object : Callback<Repository> {
                 override fun onResponse(call: Call<Repository>, response: Response<Repository>) {
                     networkResult.onSuccess()

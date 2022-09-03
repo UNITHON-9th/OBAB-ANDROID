@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.uniton.obab.R
 import com.uniton.obab.databinding.ActivityEnterRoomBinding
+import com.uniton.obab.ui.vote.CountryActivity
 import java.util.regex.Pattern
 
 class EnterRoomActivity : AppCompatActivity() {
@@ -35,9 +36,10 @@ class EnterRoomActivity : AppCompatActivity() {
 
     }
 
-    private fun changeActivity() {
-        val intent = Intent(this, null)
+    private fun changeCountryActivity() {
+        val intent = Intent(this, CountryActivity::class.java)
         startActivity(intent)
+        finish()
     }
 
     private fun checkActiveButton() {
@@ -46,7 +48,7 @@ class EnterRoomActivity : AppCompatActivity() {
             binding.enterRoomLayoutButtonEnter.setBackgroundColor(applicationContext.getColor(R.color.main_red))
             binding.enterRoomLayoutButtonEnter.isClickable = true
             binding.enterRoomLayoutButtonEnter.setOnClickListener {
-                showToast("Click")
+                changeCountryActivity()
             }
         } else {
             binding.enterRoomLayoutButtonEnter.setBackgroundColor(applicationContext.getColor(R.color.main_red_opacity))

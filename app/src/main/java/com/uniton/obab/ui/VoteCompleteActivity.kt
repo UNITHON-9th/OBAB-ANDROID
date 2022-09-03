@@ -25,11 +25,16 @@ class VoteCompleteActivity : AppCompatActivity() {
         binding = ActivityVoteCompleteBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        var isCaptain = intent.getBooleanExtra("isCaptain", false)
+        val isCaptain = intent.getBooleanExtra("isCaptain", false)
 
-        binding.voteCompleteLayoutButtonCaptain.isVisible = isCaptain
-        binding.voteCompleteLayoutButtonNormal.isVisible = !isCaptain
+        if (isCaptain) {
+            binding.voteCompleteLayoutButtonCaptain.isVisible = true
+            binding.voteCompleteLayoutButtonNormal.isVisible = false
+        } else {
+            binding.voteCompleteLayoutButtonCaptain.isVisible = false
+            binding.voteCompleteLayoutButtonNormal.isVisible = true
 
+        }
 
         binding.voteCompleteTvBtnEarlyCloseCaptain.setOnClickListener {
             showEarlyCloeDialog()
@@ -40,14 +45,22 @@ class VoteCompleteActivity : AppCompatActivity() {
         }
 
         binding.voteCompleteLayoutButtonNormal.setOnClickListener {
-            // 방장 - 알겠어요!
+            changeHomeActivity()
         }
 
     }
 
-    private fun changeActivity() {
-        val intent = Intent(this, null)
+    private fun changeHomeActivity() {
+        val intent = Intent(this, HomeActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
         startActivity(intent)
+        finish()
+    }
+
+    private fun changeResultActivity() {
+        val intent = Intent(this, ResultActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
     private fun showToast(message: String) {
@@ -61,13 +74,15 @@ class VoteCompleteActivity : AppCompatActivity() {
         codeDialog.setContentView(R.layout.dialog_code)
 
         codeDialog.show()
-        val code = codeDialog.findViewById<AppCompatTextView>(R.id.dialog_code_complete_tv_code).text
-        codeDialog.findViewById<ConstraintLayout>(R.id.dialog_code_complete_layout_code).setOnClickListener {
-            Toast.makeText(this, "초대코드가 클립보드에 복사되었습니다", Toast.LENGTH_SHORT).show()
-            val clip = ClipData.newPlainText(getString(R.string.app_name), code)
-            val clipboard =  getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
-            clipboard.setPrimaryClip(clip)
-        }
+        val code =
+            codeDialog.findViewById<AppCompatTextView>(R.id.dialog_code_complete_tv_code).text
+        codeDialog.findViewById<ConstraintLayout>(R.id.dialog_code_complete_layout_code)
+            .setOnClickListener {
+                Toast.makeText(this, "초대코드가 클립보드에 복사되었습니다", Toast.LENGTH_SHORT).show()
+                val clip = ClipData.newPlainText(getString(R.string.app_name), code)
+                val clipboard = getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
+                clipboard.setPrimaryClip(clip)
+            }
     }
 
     private fun showEarlyCloeDialog() {
@@ -78,13 +93,15 @@ class VoteCompleteActivity : AppCompatActivity() {
 
         earlyCloseDialog.show()
 
-        earlyCloseDialog.findViewById<AppCompatTextView>(R.id.dialog_early_close_tv_button_cancel).setOnClickListener {
-            earlyCloseDialog.dismiss()
-        }
+        earlyCloseDialog.findViewById<AppCompatTextView>(R.id.dialog_early_close_tv_button_cancel)
+            .setOnClickListener {
+                earlyCloseDialog.dismiss()
+            }
 
-        earlyCloseDialog.findViewById<AppCompatTextView>(R.id.dialog_early_close_tv_button_early_close).setOnClickListener{
-            // 조기종료 버튼 클릭
-        }
+        earlyCloseDialog.findViewById<AppCompatTextView>(R.id.dialog_early_close_tv_button_early_close)
+            .setOnClickListener {
+                changeResultActivity()
+            }
     }
 
 }

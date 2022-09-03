@@ -3,6 +3,7 @@ package com.uniton.obab.ui
 import SpeedyLinearLayoutManager
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.uniton.obab.R
@@ -33,6 +34,9 @@ class HomeActivity : AppCompatActivity() {
     private val carouselAdapter1 = CarouselAdapter(this, sampleList)
     private val carouselAdapter2 = CarouselAdapter(this, sampleList2)
     private val carouselAdapter3 = CarouselAdapter(this, sampleList3)
+
+    private val finishTime: Long = 1000
+    private var pressTime: Long = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,14 +80,26 @@ class HomeActivity : AppCompatActivity() {
 
     }
 
-
     private fun changeEnterRoomActivity() {
         val intent = Intent(this, EnterRoomActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT)
         startActivity(intent)
     }
 
     private fun changeCreateRoomActivity() {
         val intent = Intent(this, CreateRoomActivity::class.java)
         startActivity(intent)
+    }
+
+    override fun onBackPressed() {
+        val tempTime = System.currentTimeMillis()
+        val intervalTime: Long = tempTime - pressTime
+
+        if (intervalTime in 0..finishTime) {
+            finish()
+        } else {
+            pressTime = tempTime
+            Toast.makeText(applicationContext, "한번더 누르시면 앱이 종료됩니다", Toast.LENGTH_SHORT).show()
+        }
     }
 }

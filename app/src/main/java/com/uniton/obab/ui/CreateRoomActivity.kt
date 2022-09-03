@@ -8,9 +8,13 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.uniton.obab.R
 import com.uniton.obab.databinding.ActivityCreateRoomBinding
+import com.uniton.obab.model.RoomRepository
+import com.uniton.obab.model.RoomRequest
+import com.uniton.obab.network.room.RoomService
+import com.uniton.obab.network.room.RoomsCallback
 import java.util.regex.Pattern
 
-class CreateRoomActivity : AppCompatActivity() {
+class CreateRoomActivity : AppCompatActivity(), RoomsCallback {
     private lateinit var binding: ActivityCreateRoomBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,9 +38,11 @@ class CreateRoomActivity : AppCompatActivity() {
         }
     }
 
-    private fun changeCompleteActivity() {
+    private fun changeCompleteActivity(inviteCode: String) {
         val intent = Intent(this, CreateRoomCompleteActivity::class.java)
+        intent.putExtra("inviteCode", inviteCode)
         startActivity(intent)
+        finish()
     }
 
     private fun checkActiveButton() {
@@ -61,13 +67,27 @@ class CreateRoomActivity : AppCompatActivity() {
                     showToast("100명 이하까지 가능합니다")
                     return@setOnClickListener
                 }
-                changeCompleteActivity()
+                tryPostRooms(totalCount = participatesNumber.toInt())
             }
+
         }
     }
 
     private fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
+
+    private fun tryPostRooms(totalCount: Int) {
+        val roomRequest = RoomRequest(totalCount = totalCount)
+        RoomService(this).postRooms(roomRequest)
+    }
+
+    override fun onSuccess(result: RoomRepository) {
+        changeCompleteActivity(result.data.inviteCode)
+    }
+
+    override fun onFailure(result: RoomRepository) {
     }
 
 }
