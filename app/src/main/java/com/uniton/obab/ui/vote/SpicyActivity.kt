@@ -4,31 +4,32 @@ import android.app.Dialog
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.util.Log
 import android.view.Window
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatTextView
 import com.bumptech.glide.Glide
 import com.uniton.obab.R
-import com.uniton.obab.databinding.ActivityCountryBinding
+import com.uniton.obab.databinding.ActivitySpicyBinding
+import com.uniton.obab.databinding.ActivityTypeBinding
 import com.uniton.obab.model.VoteInformation
 import com.uniton.obab.ui.VoteCompleteActivity
 
-class CountryActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityCountryBinding
+class SpicyActivity : AppCompatActivity() {
+    private lateinit var binding: ActivitySpicyBinding
     private lateinit var timer: CountDownTimer
 
     private val MAX_COUNT = 11
     private val MAX_COUNT_MILLIS = MAX_COUNT * 1000L
     private val COUNT_DOWN_INTERVAL = 1000L
 
-    private var currentSelected = 0
+    private var currentSelected = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityCountryBinding.inflate(layoutInflater)
+        binding = ActivitySpicyBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         initListener()
@@ -37,36 +38,16 @@ class CountryActivity : AppCompatActivity() {
     }
 
     private fun initListener() = with(binding) {
-        layoutKorean.setOnClickListener {
-            layoutKorean.isSelected = true
-            layoutWestern.isSelected = false
-            layoutChinese.isSelected = false
-            layoutJapanese.isSelected = false
-            currentSelected = 0
+        layoutSpicy.setOnClickListener {
+            layoutSpicy.isSelected = true
+            layoutNotSpicy.isSelected = false
+            currentSelected = true
         }
 
-        layoutWestern.setOnClickListener {
-            layoutKorean.isSelected = false
-            layoutWestern.isSelected = true
-            layoutChinese.isSelected = false
-            layoutJapanese.isSelected = false
-            currentSelected = 1
-        }
-
-        layoutChinese.setOnClickListener {
-            layoutKorean.isSelected = false
-            layoutWestern.isSelected = false
-            layoutChinese.isSelected = true
-            layoutJapanese.isSelected = false
-            currentSelected = 2
-        }
-
-        layoutJapanese.setOnClickListener {
-            layoutKorean.isSelected = false
-            layoutWestern.isSelected = false
-            layoutChinese.isSelected = false
-            layoutJapanese.isSelected = true
-            currentSelected = 3
+        layoutNotSpicy.setOnClickListener {
+            layoutSpicy.isSelected = false
+            layoutNotSpicy.isSelected = true
+            currentSelected = false
         }
 
         btnDone.setOnClickListener {
@@ -75,12 +56,10 @@ class CountryActivity : AppCompatActivity() {
     }
 
     private fun changeActivity() {
-        val isCaptain = intent.getBooleanExtra("isCaptain", false)
-        val roomNo = intent.getStringExtra("roomNo")
-
-        val intent = Intent(this, TypeActivity::class.java)
-        val voteInformation = VoteInformation(isReader = isCaptain, roomNo = roomNo ?: "", countryId = currentSelected)
-        intent.putExtra("voteInfo", voteInformation)
+        val voteInformation = intent.getParcelableExtra<VoteInformation>("voteInfo")
+        val newInformation = voteInformation?.copy(isSpicy = currentSelected)
+        val intent = Intent(this, SoupActivity::class.java)
+        intent.putExtra("voteInfo", newInformation)
         startActivity(intent)
         finish()
     }
@@ -107,19 +86,15 @@ class CountryActivity : AppCompatActivity() {
     }
 
     private fun chooseRandomOption() = with(binding) {
-        layoutKorean.isSelected = false
-        layoutWestern.isSelected = false
-        layoutChinese.isSelected = false
-        layoutJapanese.isSelected = false
+        layoutSpicy.isSelected = false
+        layoutNotSpicy.isSelected = false
 
-        val range = (0..3)
-        currentSelected = range.random()
+        val range = (0..1)
+        currentSelected = range.random() == 0
 
         when (currentSelected) {
-            0 -> layoutKorean.isSelected = true
-            1 -> layoutWestern.isSelected = true
-            2 -> layoutChinese.isSelected = true
-            3 -> layoutJapanese.isSelected = true
+            true -> layoutSpicy.isSelected = true
+            false -> layoutNotSpicy.isSelected = true
         }
     }
 
@@ -146,5 +121,4 @@ class CountryActivity : AppCompatActivity() {
                 exitCloseDialog.dismiss()
             }
     }
-
 }
