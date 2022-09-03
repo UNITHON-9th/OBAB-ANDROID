@@ -3,6 +3,7 @@ package com.uniton.obab.ui
 import android.app.Dialog
 import android.content.ClipData
 import android.content.ClipboardManager
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -17,8 +18,11 @@ import com.uniton.obab.R
 import com.uniton.obab.databinding.ActivityVoteCompleteBinding
 import com.uniton.obab.databinding.DialogCodeBinding
 import com.uniton.obab.databinding.DialogEarlyCloseBinding
+import com.uniton.obab.model.PersonalResultRepository
+import com.uniton.obab.network.survey.PersonalResultCallback
+import com.uniton.obab.network.survey.PersonalResultService
 
-class VoteCompleteActivity : AppCompatActivity() {
+class VoteCompleteActivity : AppCompatActivity(), PersonalResultCallback {
     private lateinit var binding: ActivityVoteCompleteBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +50,17 @@ class VoteCompleteActivity : AppCompatActivity() {
 
         binding.voteCompleteLayoutButtonNormal.setOnClickListener {
             changeHomeActivity()
+        }
+
+        val deviceId = applicationContext.getSharedPreferences(
+            getString(R.string.app_name),
+            Context.MODE_PRIVATE
+        ).getString("FCM_TOKEN", "")
+
+        val voteInfo =intent.getParcelableExtra<VoteInformation>("voteInfo")
+
+        if (deviceId != null && voteInfo != null) {
+            tryGetPersonalResult(deviceId = deviceId, roomNo = voteInfo.roomNo)
         }
 
     }
@@ -102,6 +117,59 @@ class VoteCompleteActivity : AppCompatActivity() {
             .setOnClickListener {
                 changeResultActivity()
             }
+    }
+
+    private fun tryGetPersonalResult(deviceId: String, roomNo: String) {
+        PersonalResultService(this).getPersonalResult(deviceId = deviceId, roomNo = roomNo)
+    }
+
+    override fun onSuccess(result: PersonalResultRepository) {
+        val data = result.data
+        when (data.country) {
+            0 -> {
+                binding.voteCompleteTvCountry.text = "한식"
+            }
+            1 -> {
+                binding.voteCompleteTvCountry.text = "양식"
+            }
+            2 -> {
+                binding.voteCompleteTvCountry.text = "중식"
+            }
+            3 -> {
+                binding.voteCompleteTvCountry.text = "일식"
+            }
+        }
+        when (data.food) {
+            0 -> {
+                binding.voteCompleteTvFood.text = "밥"
+            }
+            1 -> {
+                binding.voteCompleteTvFood.text = "면"
+            }
+            2 -> {
+                binding.voteCompleteTvFood.text = "떡"
+            }
+            3 -> {
+                binding.voteCompleteTvFood.text = "빵"
+            }
+        }
+
+        if (data.isSpicy) binding.voteCompleteTvSpicy.text = "매운 음식"
+        else binding.voteCompleteTvSpicy.text = "안 매운 음식"
+
+        if (data.isSoup) binding.voteCompleteTvSpicy.text = "국물 음식"
+        else binding.voteCompleteTvSpicy.text = "국물이 없는 음식"
+
+        if (data.isHot) binding.voteCompleteTvHot.text ="뜨거운 음식"
+        else binding.voteCompleteTvHot.text = "차가운 음식"
+
+        binding.voteCompleteTvCompleteNumber.text = data.submitCount.toString()
+        binding.voteCompleteTvMaxNumber.text = data.totalCount.toString()
+    }
+
+    override fun onFailure(result: String) {
+        TODO("Not yet implemented")
+        showToast("수리중...")
     }
 
 }

@@ -12,6 +12,7 @@ import androidx.core.app.NotificationCompat
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import com.uniton.obab.ui.HomeActivity
+import com.uniton.obab.ui.ResultActivity
 
 class FcmService : FirebaseMessagingService() {
 
@@ -36,13 +37,14 @@ class FcmService : FirebaseMessagingService() {
                 "title" to it.title.toString(),
                 "body" to it.body.toString()
             )
-            sendNotification(notificationInfo)
+            sendNotification(notificationInfo, remoteMessage.data)
         }
     }
 
-    private fun sendNotification(messageBody: Map<String, String>) {
+    private fun sendNotification(messageBody: Map<String, String>, data: Map<String, String>) {
         val intent = Intent(this, HomeActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        intent.putExtra("roomNo", data["roomNo"])
         val pendingIntent = PendingIntent.getActivity(
             this, 0 /* Request code */, intent,
             PendingIntent.FLAG_ONE_SHOT

@@ -6,6 +6,7 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface Api {
     @GET("/repos/{owner}/{repo}")
@@ -18,4 +19,6 @@ interface Api {
     fun postRooms(@Body params: CreateRoomRequest): Call<CreateRoomRepository>
     @POST("/rooms/enter")
     fun postEnterRooms(@Body params: EnterRoomRequest): Call<EnterRoomRepository>
+    @GET("surveys/{deviceId}")
+    fun getPersonalResult(@Path ("deviceId") deviceId: String, @Query("roomNo") roomNo: String): Call<PersonalResultRepository>
 }
