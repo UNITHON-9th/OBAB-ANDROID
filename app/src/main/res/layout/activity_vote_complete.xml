@@ -95,6 +95,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/vote_complete_iv_vote_complete">
 
                 <TextView
+                    android:id="@+id/vote_complete_tv_country"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
@@ -106,6 +107,7 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/vote_complete_tv_food"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
@@ -117,6 +119,7 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/vote_complete_tv_spicy"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
@@ -128,6 +131,7 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/vote_complete_tv_soup"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
@@ -139,6 +143,7 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/vote_complete_tv_hot"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"

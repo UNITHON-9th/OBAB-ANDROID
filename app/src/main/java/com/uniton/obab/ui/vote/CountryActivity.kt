@@ -8,13 +8,20 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import android.util.Log
 import android.view.Window
+import androidx.annotation.Nullable
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatTextView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.load.resource.gif.GifDrawable
+import com.bumptech.glide.request.RequestListener
 import com.uniton.obab.R
 import com.uniton.obab.databinding.ActivityCountryBinding
 import com.uniton.obab.model.VoteInformation
 import com.uniton.obab.ui.VoteCompleteActivity
+import javax.sql.DataSource
+
 
 class CountryActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCountryBinding
@@ -74,6 +81,7 @@ class CountryActivity : AppCompatActivity() {
         }
 
         btnDone.setOnClickListener {
+//            chooseRandomOption()
             changeActivity()
         }
     }
@@ -105,7 +113,34 @@ class CountryActivity : AppCompatActivity() {
     }
 
     private fun initGif() {
-        Glide.with(this).load(R.drawable.count).override(560, 560).into(binding.ivProgress)
+        val listener: RequestListener<GifDrawable> by lazy {
+            object : RequestListener<GifDrawable> {
+                override fun onLoadFailed(
+                    e: GlideException?, model: Any,
+                    target: com.bumptech.glide.request.target.Target<GifDrawable>,
+                    isFirstResource: Boolean
+                ): Boolean {
+                    return false
+                }
+
+                override fun onResourceReady(
+                    resource: GifDrawable?,
+                    model: Any?,
+                    target: com.bumptech.glide.request.target.Target<GifDrawable>?,
+                    dataSource: com.bumptech.glide.load.DataSource?,
+                    isFirstResource: Boolean
+                ): Boolean {
+                    resource?.setLoopCount(1)
+                    return false
+                }
+            }
+        }
+
+        Glide.with(this).asGif()
+            .load(R.drawable.count)
+            .diskCacheStrategy(DiskCacheStrategy.NONE)// 디스크 캐시 저장 off
+            .skipMemoryCache(true)
+            .listener(listener).into(binding.ivProgress)
     }
 
     private fun chooseRandomOption() = with(binding) {
