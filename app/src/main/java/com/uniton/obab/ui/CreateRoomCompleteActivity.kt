@@ -11,6 +11,10 @@ import androidx.appcompat.app.AppCompatActivity
 import com.uniton.obab.R
 import com.uniton.obab.databinding.ActivityCreateRoomBinding
 import com.uniton.obab.databinding.ActivityCreateRoomCompleteBinding
+import com.uniton.obab.model.RoomRepository
+import com.uniton.obab.model.RoomRequest
+import com.uniton.obab.network.room.RoomService
+import com.uniton.obab.network.room.RoomsCallback
 import com.uniton.obab.ui.vote.CountryActivity
 import java.util.regex.Pattern
 
@@ -20,6 +24,8 @@ class CreateRoomCompleteActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityCreateRoomCompleteBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.createRoomCompleteTvCode.text = intent.getStringExtra("inviteCode")
 
         binding.createRoomCompleteLayoutCode.setOnClickListener {
             showToast("초대코드가 클립보드에 복사되었습니다")
@@ -51,5 +57,6 @@ class CreateRoomCompleteActivity : AppCompatActivity() {
     private fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
+
 
 }
