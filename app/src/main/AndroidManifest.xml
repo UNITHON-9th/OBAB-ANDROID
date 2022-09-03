@@ -66,6 +66,8 @@
         <activity android:name=".ui.CreateRoomCompleteActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".ui.VoteCompleteActivity"
+            android:screenOrientation="portrait" />
 
     </application>
 
