@@ -56,7 +56,7 @@ class EnterRoomActivity : AppCompatActivity() {
     }
 
     private fun showToast(message: String) {
-        Toast(this).showCustomToast(message, this)
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
 }
