@@ -83,7 +83,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_food_sample" />
+            android:src="@drawable/ic_soup" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -114,7 +114,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_food_sample" />
+            android:src="@drawable/ic_not_soup" />
 
         <TextView
             android:layout_width="wrap_content"
