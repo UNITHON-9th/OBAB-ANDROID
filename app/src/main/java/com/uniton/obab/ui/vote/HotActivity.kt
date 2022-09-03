@@ -1,6 +1,7 @@
 package com.uniton.obab.ui.vote
 
 import android.app.Dialog
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -9,17 +10,28 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import android.util.Log
 import android.view.Window
+import android.widget.Toast
 import androidx.appcompat.widget.AppCompatTextView
 import com.bumptech.glide.Glide
 import com.uniton.obab.R
 import com.uniton.obab.databinding.ActivityHotBinding
-import com.uniton.obab.databinding.ActivitySoupBinding
+import com.uniton.obab.model.CreateRoomRepository
+import com.uniton.obab.model.CreateRoomRequest
 import com.uniton.obab.model.VoteInformation
+import com.uniton.obab.model.request.UserChoiceRequest
+import com.uniton.obab.network.Api
+import com.uniton.obab.network.room.create.CreateRoomService
+import com.uniton.obab.network.sendChoice.SendUserChoiceCallback
+import com.uniton.obab.network.sendChoice.SendUserChoiceService
 import com.uniton.obab.ui.VoteCompleteActivity
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
-class HotActivity : AppCompatActivity() {
+class HotActivity : AppCompatActivity(), SendUserChoiceCallback {
     private lateinit var binding: ActivityHotBinding
     private lateinit var timer: CountDownTimer
+    private var information: VoteInformation? = null
 
     private val MAX_COUNT = 11
     private val MAX_COUNT_MILLIS = MAX_COUNT * 1000L
@@ -42,28 +54,45 @@ class HotActivity : AppCompatActivity() {
             layoutHot.isSelected = true
             layoutCold.isSelected = false
             currentSelected = true
-            changeActivity()
+            this@HotActivity.sendUserChoice()
         }
 
         layoutCold.setOnClickListener {
             layoutHot.isSelected = false
             layoutCold.isSelected = true
             currentSelected = false
-            changeActivity()
+            this@HotActivity.sendUserChoice()
         }
 
         btnDone.setOnClickListener {
-            changeActivity()
+            this@HotActivity.sendUserChoice()
         }
     }
 
-    private fun changeActivity() {
+    private fun sendUserChoice() {
         val voteInformation = intent.getParcelableExtra<VoteInformation>("voteInfo")
-        val newInformation = voteInformation?.copy(isHot = currentSelected)
-        val intent = Intent(this, VoteCompleteActivity::class.java)
-        intent.putExtra("voteInfo", newInformation)
-        startActivity(intent)
-        finish()
+        information = voteInformation?.copy(isHot = currentSelected)
+
+        val deviceId = applicationContext.getSharedPreferences(
+            getString(R.string.app_name),
+            Context.MODE_PRIVATE
+        ).getString("FCM_TOKEN", "")
+
+        information?.apply {
+            if (deviceId != null) {
+                val request = UserChoiceRequest(
+                    deviceId = deviceId ?: "",
+                    roomNo = roomNo,
+                    countryId = countryId,
+                    typeId = typeId,
+                    isSpicy = isSpicy,
+                    isSoup = isSoup,
+                    isHot = isHot
+                )
+
+                SendUserChoiceService(this@HotActivity).sendUserChoice(deviceId ?: "", request)
+            } else onFail(errMsg = "디바이스 아이디를 가져오지 못했습니다")
+        } ?: onFail(errMsg = "유저 선택 정보를 가져오지 못했습니다")
     }
 
     private fun initTimer() = with(binding) {
@@ -75,7 +104,7 @@ class HotActivity : AppCompatActivity() {
             override fun onFinish() {
                 chooseRandomOption()
                 Log.w("TAG", "Finished!")
-                changeActivity()
+                this@HotActivity.sendUserChoice()
             }
 
         }
@@ -130,5 +159,16 @@ class HotActivity : AppCompatActivity() {
     override fun onStop() {
         timer.cancel()
         super.onStop()
+    }
+
+    override fun onSuccess() {
+        val intent = Intent(this, VoteCompleteActivity::class.java)
+        intent.putExtra("voteInfo", information)
+        startActivity(intent)
+        finish()
+    }
+
+    override fun onFail(errMsg: String?) {
+        Toast.makeText(this, "다시 시도해 주세요 $errMsg", Toast.LENGTH_SHORT).show()
     }
 }
