@@ -1,0 +1,869 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.vote.ResultActivity">
+
+    <TextView
+        android:id="@+id/tv_result_title"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:gravity="center"
+        android:text="오늘의 메뉴는?"
+        android:textColor="@color/gray6"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray2" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="26dp"
+                android:background="@drawable/bg_option_unselected"
+                android:orientation="vertical"
+                android:paddingVertical="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="빠 밥! 오늘의 추천 메뉴"
+                    android:textAlignment="center"
+                    android:textColor="@color/gray7"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="160dp"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginVertical="20dp"
+                    tools:src="@tools:sample/avatars" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="라면"
+                    android:textAlignment="center"
+                    android:textColor="@color/gray7"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="70% 일치 (10명 참여)"
+                    android:textAlignment="center"
+                    android:textColor="@color/gray7"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_option_unselected"
+                android:orientation="vertical"
+                android:paddingHorizontal="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:id="@+id/layout_country_first"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="12dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingVertical="4dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center">
+
+                            <View
+                                android:id="@+id/chip_country_first"
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:background="@drawable/bg_category_chip" />
+
+                            <TextView
+                                android:id="@+id/tv_country_first_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:text="한식"
+                                android:textColor="@color/gray7"
+                                android:textSize="14sp" />
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/tv_country_first"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="60%"
+                            android:textAlignment="center"
+                            android:textColor="@color/gray7"
+                            android:textSize="14sp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/chip_country_first" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/layout_country_second"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="12dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingVertical="4dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center">
+
+                            <View
+                                android:id="@+id/chip_country_second"
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:background="@drawable/bg_category_chip"
+                                android:backgroundTint="@color/gray5" />
+
+                            <TextView
+                                android:id="@+id/tv_country_second_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:text="중식"
+                                android:textColor="@color/gray7"
+                                android:textSize="14sp" />
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/tv_country_second"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="20%"
+                            android:textAlignment="center"
+                            android:textColor="@color/gray7"
+                            android:textSize="14sp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/chip_country_second" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/layout_country_third"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="12dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingVertical="4dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center">
+
+                            <View
+                                android:id="@+id/chip_country_third"
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:background="@drawable/bg_category_chip"
+                                android:backgroundTint="@color/gray4" />
+
+                            <TextView
+                                android:id="@+id/tv_country_third_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:text="양식"
+                                android:textColor="@color/gray7"
+                                android:textSize="14sp" />
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/tv_country_third"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="10%"
+                            android:textAlignment="center"
+                            android:textColor="@color/gray7"
+                            android:textSize="14sp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/chip_country_third" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/layout_country_forth"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="12dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingVertical="4dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center">
+
+                            <View
+                                android:id="@+id/chip_country_forth"
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:background="@drawable/bg_category_chip"
+                                android:backgroundTint="@color/gray3" />
+
+                            <TextView
+                                android:id="@+id/tv_country_forth_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:text="일식"
+                                android:textColor="@color/gray7"
+                                android:textSize="14sp" />
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/tv_country_forth"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="10%"
+                            android:textAlignment="center"
+                            android:textColor="@color/gray7"
+                            android:textSize="14sp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/chip_country_forth" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintTop_toBottomOf="@id/tv_spicy">
+
+                    <View
+                        android:id="@+id/graph_country_first"
+                        android:layout_width="0dp"
+                        android:layout_height="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_weight="6"
+                        android:background="@drawable/bg_left_corner_graph"
+                        android:backgroundTint="@color/main_red" />
+
+                    <View
+                        android:id="@+id/graph_country_second"
+                        android:layout_width="0dp"
+                        android:layout_height="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_weight="2"
+                        android:background="@drawable/bg_no_corner_graph"
+                        android:backgroundTint="@color/gray5" />
+
+                    <View
+                        android:id="@+id/graph_country_third"
+                        android:layout_width="0dp"
+                        android:layout_height="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_no_corner_graph"
+                        android:backgroundTint="@color/gray4" />
+
+                    <View
+                        android:id="@+id/graph_country_forth"
+                        android:layout_width="0dp"
+                        android:layout_height="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_right_corner_graph"
+                        android:backgroundTint="@color/gray3" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_option_unselected"
+                android:orientation="vertical"
+                android:paddingHorizontal="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:id="@+id/layout_type_first"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="12dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingVertical="4dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center">
+
+                            <View
+                                android:id="@+id/chip_type_first"
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:background="@drawable/bg_category_chip" />
+
+                            <TextView
+                                android:id="@+id/tv_type_first_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:text="면"
+                                android:textColor="@color/gray7"
+                                android:textSize="14sp" />
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/tv_type_first"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="70%"
+                            android:textAlignment="center"
+                            android:textColor="@color/gray7"
+                            android:textSize="14sp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/chip_type_first" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/layout_type_second"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="12dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingVertical="4dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center">
+
+                            <View
+                                android:id="@+id/chip_type_second"
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:background="@drawable/bg_category_chip"
+                                android:backgroundTint="@color/gray5" />
+
+                            <TextView
+                                android:id="@+id/tv_type_second_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:text="밥"
+                                android:textColor="@color/gray7"
+                                android:textSize="14sp" />
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/tv_type_second"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="20%"
+                            android:textAlignment="center"
+                            android:textColor="@color/gray7"
+                            android:textSize="14sp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/chip_country_second" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/layout_type_third"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="12dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingVertical="4dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center">
+
+                            <View
+                                android:id="@+id/chip_type_third"
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:background="@drawable/bg_category_chip"
+                                android:backgroundTint="@color/gray4" />
+
+                            <TextView
+                                android:id="@+id/tv_type_third_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:text="빵"
+                                android:textColor="@color/gray7"
+                                android:textSize="14sp" />
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/tv_type_third"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="10%"
+                            android:textAlignment="center"
+                            android:textColor="@color/gray7"
+                            android:textSize="14sp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/chip_type_third" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/layout_type_forth"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="12dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingVertical="4dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center">
+
+                            <View
+                                android:id="@+id/chip_type_forth"
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:background="@drawable/bg_category_chip"
+                                android:backgroundTint="@color/gray3" />
+
+                            <TextView
+                                android:id="@+id/tv_type_forth_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:text="떡"
+                                android:textColor="@color/gray7"
+                                android:textSize="14sp" />
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/tv_type_forth"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="0%"
+                            android:textAlignment="center"
+                            android:textColor="@color/gray7"
+                            android:textSize="14sp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/chip_type_forth" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintTop_toBottomOf="@id/tv_spicy">
+
+                    <View
+                        android:id="@+id/graph_type_first"
+                        android:layout_width="0dp"
+                        android:layout_height="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_weight="7"
+                        android:background="@drawable/bg_left_corner_graph"
+                        android:backgroundTint="@color/main_red" />
+
+                    <View
+                        android:id="@+id/graph_type_second"
+                        android:layout_width="0dp"
+                        android:layout_height="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_weight="2"
+                        android:background="@drawable/bg_no_corner_graph"
+                        android:backgroundTint="@color/gray5" />
+
+                    <View
+                        android:id="@+id/graph_type_third"
+                        android:layout_width="0dp"
+                        android:layout_height="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_no_corner_graph"
+                        android:backgroundTint="@color/gray4" />
+
+                    <View
+                        android:id="@+id/graph_type_forth"
+                        android:layout_width="0dp"
+                        android:layout_height="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_weight="0"
+                        android:background="@drawable/bg_right_corner_graph"
+                        android:backgroundTint="@color/gray3" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_option_unselected"
+                android:orientation="vertical"
+                android:paddingHorizontal="16dp">
+
+                <View
+                    android:id="@+id/chip_spicy"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:background="@drawable/bg_category_chip"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_spicy"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tv_spicy" />
+
+                <TextView
+                    android:id="@+id/tv_spicy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:text="매운 거 60%"
+                    android:textColor="@color/gray7"
+                    android:textSize="14sp"
+                    app:layout_constraintLeft_toRightOf="@id/chip_spicy"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_not_spicy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="40% 안 매운 거"
+                    android:textColor="@color/gray7"
+                    android:textSize="14sp"
+                    app:layout_constraintRight_toLeftOf="@id/chip_not_spicy"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/chip_not_spicy"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:background="@drawable/bg_category_chip"
+                    android:backgroundTint="@color/gray3"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_not_spicy"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tv_not_spicy" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_spicy">
+
+                    <View
+                        android:id="@+id/graph_spicy"
+                        android:layout_width="0dp"
+                        android:layout_height="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_weight="6"
+                        android:background="@drawable/bg_left_corner_graph"
+                        android:backgroundTint="@color/main_red" />
+
+                    <View
+                        android:id="@+id/graph_not_spicy"
+                        android:layout_width="0dp"
+                        android:layout_height="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_weight="4"
+                        android:background="@drawable/bg_right_corner_graph"
+                        android:backgroundTint="@color/gray3" />
+
+                </LinearLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_option_unselected"
+                android:orientation="vertical"
+                android:paddingHorizontal="16dp">
+
+                <View
+                    android:id="@+id/chip_soup"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:background="@drawable/bg_category_chip"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_soup"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tv_soup" />
+
+                <TextView
+                    android:id="@+id/tv_soup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:text="국물 50%"
+                    android:textColor="@color/gray7"
+                    android:textSize="14sp"
+                    app:layout_constraintLeft_toRightOf="@id/chip_soup"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_not_soup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="50% 국물이 없는 음"
+                    android:textColor="@color/gray7"
+                    android:textSize="14sp"
+                    app:layout_constraintRight_toLeftOf="@id/chip_not_soup"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/chip_not_soup"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:background="@drawable/bg_category_chip"
+                    android:backgroundTint="@color/gray3"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_not_soup"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tv_not_soup" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_soup">
+
+                    <View
+                        android:id="@+id/graph_soup"
+                        android:layout_width="0dp"
+                        android:layout_height="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_weight="5"
+                        android:background="@drawable/bg_left_corner_graph"
+                        android:backgroundTint="@color/main_red" />
+
+                    <View
+                        android:id="@+id/graph_not_soup"
+                        android:layout_width="0dp"
+                        android:layout_height="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_weight="5"
+                        android:background="@drawable/bg_right_corner_graph"
+                        android:backgroundTint="@color/gray3" />
+
+                </LinearLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_option_unselected"
+                android:orientation="vertical"
+                android:paddingHorizontal="16dp">
+
+                <View
+                    android:id="@+id/chip_hot"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:background="@drawable/bg_category_chip"
+                    android:backgroundTint="@color/gray3"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_hot"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tv_hot" />
+
+                <TextView
+                    android:id="@+id/tv_hot"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:text="뜨거운 음식 20%"
+                    android:textColor="@color/gray7"
+                    android:textSize="14sp"
+                    app:layout_constraintLeft_toRightOf="@id/chip_hot"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_cold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="80% 차가운 음식"
+                    android:textColor="@color/gray7"
+                    android:textSize="14sp"
+                    app:layout_constraintRight_toLeftOf="@id/chip_cold"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/chip_cold"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:background="@drawable/bg_category_chip"
+                    android:backgroundTint="@color/main_red"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_cold"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tv_cold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_hot">
+
+                    <View
+                        android:id="@+id/graph_hot"
+                        android:layout_width="0dp"
+                        android:layout_height="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_weight="2"
+                        android:background="@drawable/bg_left_corner_graph"
+                        android:backgroundTint="@color/gray3" />
+
+                    <View
+                        android:id="@+id/graph_cold"
+                        android:layout_width="0dp"
+                        android:layout_height="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_weight="8"
+                        android:background="@drawable/bg_right_corner_graph"
+                        android:backgroundTint="@color/main_red" />
+
+                </LinearLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+    <Button
+        android:id="@+id/btn_random"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_margin="16dp"
+        android:background="@drawable/bg_main_btn"
+        android:elevation="0dp"
+        android:stateListAnimator="@null"
+        android:text="완료"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+</LinearLayout>
