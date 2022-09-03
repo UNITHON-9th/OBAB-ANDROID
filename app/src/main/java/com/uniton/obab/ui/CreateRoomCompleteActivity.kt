@@ -1,5 +1,7 @@
 package com.uniton.obab.ui
 
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
@@ -18,19 +20,25 @@ class CreateRoomCompleteActivity : AppCompatActivity() {
         binding = ActivityCreateRoomCompleteBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.createRoomCompleteLayoutCode.setOnClickListener {
+            showToast("초대코드가 클립보드에 복사되었습니다")
+            val clip = ClipData.newPlainText(getString(R.string.app_name), binding.createRoomCompleteTvCode.text)
+            val clipboard =  getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
+            clipboard.setPrimaryClip(clip)
+        }
 
         binding.createRoomCompleteIvBack.setOnClickListener {
             finish()
         }
 
         binding.createRoomCompleteLayoutButtonStart.setOnClickListener {
-            showToast("CLICK")
+            changeActivity()
         }
 
     }
 
     private fun changeActivity() {
-        val intent = Intent(this, null)
+        val intent = Intent(this, VoteCompleteActivity::class.java)
         startActivity(intent)
     }
 

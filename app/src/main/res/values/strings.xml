@@ -53,5 +53,11 @@
     <string name="code">참여 코드</string>
     <string name="vote_early_close">투표 조기 종료</string>
 
+    <!--  DIALOG  -->
+    <string name="dialog_code_description">방 참여 코드를 친구들에게 공유하세요!</string>
+    <string name="dialog_early_close_description">정말 투표를 종료하실건가요?</string>
+    <string name="cancel">취소</string>
+    <string name="dialog_early_close">조기 종료</string>
+
 
 </resources>
