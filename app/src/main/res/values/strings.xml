@@ -30,5 +30,28 @@
     <string name="start_vote">투표 시작하기</string>
     <string name="number_participants_unit">명</string>
 
+    <!--  VOTE RESULT  -->
+    <string name="vote_complete_header">오늘의 메뉴는?</string>
+    <string name="vote_complete">투표 완료!</string>
+
+
+    <!--  SELECT  -->
+    <string name="select_korean">한식</string>
+    <string name="select_western">한식</string>
+    <string name="select_chinese">중식</string>
+    <string name="select_japanese">일식</string>
+    <string name="select_spicy">매운 음식</string>
+    <string name="select_not_spicy">안 매운 음식</string>
+    <string name="select_soup">국물 음식</string>
+    <string name="select_not_soup">국물이 없는 음식</string>
+    <string name="select_hot">뜨거운 음식</string>
+    <string name="select_cold">차가운 음식</string>
+    <string name="ok">알겠어요!</string>
+    <string name="notification_description">투표가 종료되면 알림을 보내드릴게요</string>
+    <string name="wait_description">아직 투표하지 않은 사람이 있어요</string>
+    <string name="complete">완료</string>
+    <string name="code">참여 코드</string>
+    <string name="vote_early_close">투표 조기 종료</string>
+
 
 </resources>

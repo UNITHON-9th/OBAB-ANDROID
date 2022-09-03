@@ -80,4 +80,8 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:30.3.1')
     implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation 'com.google.firebase:firebase-messaging-ktx'
+
+    // Flexbox
+    implementation 'com.google.android.flexbox:flexbox:3.0.0'
+
 }
