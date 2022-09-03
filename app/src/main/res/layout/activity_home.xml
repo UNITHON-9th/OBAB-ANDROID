@@ -61,7 +61,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="8dp"
             android:layout_weight="1"
-            android:background="@drawable/bg_option_unseleted">
+            android:background="@drawable/bg_option_unselected">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/iv_create"
@@ -98,7 +98,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginEnd="16dp"
             android:layout_weight="1"
-            android:background="@drawable/bg_option_unseleted">
+            android:background="@drawable/bg_option_unselected">
 
 
             <androidx.appcompat.widget.AppCompatImageView
