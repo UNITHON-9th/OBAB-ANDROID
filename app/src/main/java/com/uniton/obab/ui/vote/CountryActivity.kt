@@ -1,10 +1,12 @@
 package com.uniton.obab.ui.vote
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.uniton.obab.databinding.ActivityCountryBinding
+import com.uniton.obab.ui.VoteCompleteActivity
 
 class CountryActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCountryBinding
@@ -59,8 +61,17 @@ class CountryActivity : AppCompatActivity() {
         }
 
         btnRandom.setOnClickListener {
-            chooseRandomOption()
+//            chooseRandomOption()
+            changeActivity()
         }
+    }
+
+    private fun changeActivity() {
+        val isCaptain = intent.getBooleanExtra("isCaptain", false)
+        val intent = Intent(this, VoteCompleteActivity::class.java)
+        intent.putExtra("isCaptain",isCaptain)
+        startActivity(intent)
+        finish()
     }
 
     private fun initTimer() = with(binding) {

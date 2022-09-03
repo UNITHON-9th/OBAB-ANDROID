@@ -1,4 +1,4 @@
-package com.uniton.obab.ui.vote
+package com.uniton.obab.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
