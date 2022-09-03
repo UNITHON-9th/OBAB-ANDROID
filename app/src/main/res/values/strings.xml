@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">오밥</string>
 
+    <!-- CONFIG  -->
+    <string name="default_notification_channel_id">DEFAULT_CHANNEL</string>
+
     <!--  HOME  -->
     <string name="app_name_short">오 밥</string>
     <string name="app_name_full">오늘의 밥</string>
@@ -25,7 +28,6 @@
     <string name="start_vote">투표 시작하기</string>
 
     <!--  CREATE ROOM COMPLETE  -->
-
 
 
 </resources>
