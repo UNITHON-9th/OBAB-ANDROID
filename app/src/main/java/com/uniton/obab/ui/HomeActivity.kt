@@ -13,7 +13,7 @@ class HomeActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.homeLayoutCreate.setOnClickListener {
-
+            changeCreateRoomActivity()
         }
 
         binding.homeLayoutEnter.setOnClickListener {
@@ -25,6 +25,11 @@ class HomeActivity : AppCompatActivity() {
 
     private fun changeEnterRoomActivity() {
         val intent = Intent(this, EnterRoomActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun changeCreateRoomActivity() {
+        val intent = Intent(this, CreateRoomActivity::class.java)
         startActivity(intent)
     }
 
