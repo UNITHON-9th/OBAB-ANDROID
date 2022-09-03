@@ -5,10 +5,10 @@
     android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/enter_room_layout_header"
+        android:id="@+id/create_room_complete_layout_header"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        app:layout_constraintBottom_toTopOf="@id/enter_room_layout_body"
+        app:layout_constraintBottom_toTopOf="@id/create_room_complete_layout_body"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -16,7 +16,7 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/enter_room"
+            android:text="@string/create_room"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -25,7 +25,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/enter_room_iv_back"
+            android:id="@+id/create_room_complete_iv_back"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginStart="16dp"
@@ -38,70 +38,108 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/gray3"
-            app:layout_constraintBottom_toBottomOf="@id/enter_room_layout_header"
+            app:layout_constraintBottom_toBottomOf="@id/create_room_complete_layout_header"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/enter_room_layout_header" />
+            app:layout_constraintTop_toBottomOf="@id/create_room_complete_layout_header" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/enter_room_layout_body"
+        android:id="@+id/create_room_complete_layout_body"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:paddingHorizontal="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enter_room_layout_header">
+        app:layout_constraintTop_toBottomOf="@+id/create_room_complete_layout_header">
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/enter_room_tv_code"
+            android:id="@+id/create_room_complete_tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="28dp"
-            android:text="@string/enter_code"
+            android:text="@string/complete_enter_code"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/create_room_complete_layout_code"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/enter_room_tv_code_description"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/create_room_complete_layout_code"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/enter_code_description"
-            android:textColor="@color/gray6"
-            android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/enter_room_tv_code" />
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/enter_room_et_code"
-            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:background="@drawable/bg_gray2_radius12"
-            android:hint="@string/place_holder_enter_code"
-            android:inputType="number"
-            android:maxLength="6"
-            android:paddingHorizontal="20dp"
+            android:paddingHorizontal="32dp"
             android:paddingVertical="16dp"
-            android:textColorHint="@color/gray4"
+            app:layout_constraintBottom_toTopOf="@+id/create_room_complete_tv_code_description"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/create_room_complete_tv_title">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/create_room_complete_iv_copy"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_copy"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/create_room_complete_tv_code"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/create_room_complete_tv_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="123456"
+                android:textColor="@color/gray6"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/create_room_complete_iv_copy"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/create_room_complete_tv_code_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/create_room_complete_description"
+            android:textColor="@color/gray6"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/enter_room_tv_code_description" />
+            app:layout_constraintTop_toBottomOf="@+id/create_room_complete_layout_code" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/create_room_complete_tv_button_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="@string/start_button_description"
+        android:textColor="@color/gray6"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/create_room_complete_layout_button_start"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/enter_room_layout_button_enter"
+        android:id="@+id/create_room_complete_layout_button_start"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/main_red_opacity"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/bg_main_btn"
         android:clickable="false"
         android:paddingVertical="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -109,10 +147,10 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/enter_room_tv_button_enter"
+            android:id="@+id/create_room_complete_tv_start_vote"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/button_enter"
+            android:text="@string/start_vote"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
