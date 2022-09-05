@@ -46,7 +46,7 @@ class TypeActivity : AppCompatActivity() {
             changeActivity()
         }
 
-        layoutRice.setOnClickListener {
+        layoutNoodle.setOnClickListener {
             layoutRice.isSelected = false
             layoutNoodle.isSelected = true
             layoutRiceCake.isSelected = false
@@ -55,7 +55,7 @@ class TypeActivity : AppCompatActivity() {
             changeActivity()
         }
 
-        layoutRice.setOnClickListener {
+        layoutRiceCake.setOnClickListener {
             layoutRice.isSelected = false
             layoutNoodle.isSelected = false
             layoutRiceCake.isSelected = true
@@ -64,7 +64,7 @@ class TypeActivity : AppCompatActivity() {
             changeActivity()
         }
 
-        layoutRice.setOnClickListener {
+        layoutBread.setOnClickListener {
             layoutRice.isSelected = false
             layoutNoodle.isSelected = false
             layoutRiceCake.isSelected = false

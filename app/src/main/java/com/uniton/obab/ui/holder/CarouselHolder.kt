@@ -19,7 +19,6 @@ class CarouselHolder(
         //var requestOptions = RequestOptions().transforms(CenterCrop(), RoundedCorners(16))
         //glide.load(imgResId).into(ivFood)
 
-        Log.w("TAG", "bind")
         ivFood.setImageResource(imgResId)
     }
 }

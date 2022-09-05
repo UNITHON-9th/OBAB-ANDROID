@@ -2,6 +2,7 @@ package com.uniton.obab.network
 
 import com.uniton.obab.model.*
 import com.uniton.obab.model.request.UserChoiceRequest
+import com.uniton.obab.model.response.ResultResponse
 import com.uniton.obab.model.response.UserChoiceResponse
 import retrofit2.Call
 import retrofit2.Response
@@ -23,9 +24,8 @@ interface Api {
     @POST("/rooms/enter")
     fun postEnterRooms(@Body params: EnterRoomRequest): Call<EnterRoomRepository>
 
-    @POST("/surveys/{deviceId}")
+    @POST("/surveys")
     fun postUserChoice(
-        @Path ("deviceId") deviceId: String,
         @Body params: UserChoiceRequest
     ): Call<UserChoiceResponse>
 
@@ -34,4 +34,9 @@ interface Api {
         @Path ("deviceId") deviceId: String,
         @Query("roomNo") roomNo: String
     ): Call<PersonalResultRepository>
+
+    @GET("/surveys/total/{roomNo}")
+    fun getResult(
+        @Path ("roomNo") roomNo: String,
+    ): Call<ResultResponse>
 }

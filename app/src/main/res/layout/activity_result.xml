@@ -655,7 +655,8 @@
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_spicy">
 
-                    <View
+                    <LinearLayout
+                        android:orientation="vertical"
                         android:id="@+id/graph_spicy"
                         android:layout_width="0dp"
                         android:layout_height="16dp"
@@ -664,7 +665,8 @@
                         android:background="@drawable/bg_left_corner_graph"
                         android:backgroundTint="@color/main_red" />
 
-                    <View
+                    <LinearLayout
+                        android:orientation="vertical"
                         android:id="@+id/graph_not_spicy"
                         android:layout_width="0dp"
                         android:layout_height="16dp"

@@ -160,8 +160,8 @@ class VoteCompleteActivity : AppCompatActivity(), PersonalResultCallback {
         if (data.isSpicy) binding.voteCompleteTvSpicy.text = "매운 음식"
         else binding.voteCompleteTvSpicy.text = "안 매운 음식"
 
-        if (data.isSoup) binding.voteCompleteTvSpicy.text = "국물 음식"
-        else binding.voteCompleteTvSpicy.text = "국물이 없는 음식"
+        if (data.isSoup) binding.voteCompleteTvSoup.text = "국물 음식"
+        else binding.voteCompleteTvSoup.text = "국물이 없는 음식"
 
         if (data.isHot) binding.voteCompleteTvHot.text = "뜨거운 음식"
         else binding.voteCompleteTvHot.text = "차가운 음식"

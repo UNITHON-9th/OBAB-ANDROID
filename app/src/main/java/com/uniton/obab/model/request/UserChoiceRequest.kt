@@ -8,9 +8,9 @@ data class UserChoiceRequest(
     @SerializedName("roomNo")
     val roomNo: String,
     @SerializedName("country")
-    val countryId: Int,
+    val country: Int,
     @SerializedName("food")
-    val typeId: Int,
+    val food: Int,
     @SerializedName("isSpicy")
     val isSpicy: Boolean,
     @SerializedName("isSoup")
