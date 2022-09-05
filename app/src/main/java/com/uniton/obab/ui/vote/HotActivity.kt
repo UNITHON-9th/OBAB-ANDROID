@@ -80,19 +80,26 @@ class HotActivity : AppCompatActivity(), SendUserChoiceCallback {
 
         information?.apply {
             if (deviceId != null) {
+                Log.w("TAG", "a")
                 val request = UserChoiceRequest(
-                    deviceId = deviceId ?: "",
+                    deviceId = deviceId,
                     roomNo = roomNo,
-                    countryId = countryId,
-                    typeId = typeId,
+                    country = countryId,
+                    food = typeId,
                     isSpicy = isSpicy,
                     isSoup = isSoup,
                     isHot = isHot
                 )
 
-                SendUserChoiceService(this@HotActivity).sendUserChoice(deviceId ?: "", request)
-            } else onFail(errMsg = "디바이스 아이디를 가져오지 못했습니다")
-        } ?: onFail(errMsg = "유저 선택 정보를 가져오지 못했습니다")
+                SendUserChoiceService(this@HotActivity).sendUserChoice(request)
+            } else {
+                Log.w("TAG", "b")
+                onFail(errMsg = "디바이스 아이디를 가져오지 못했습니다")
+            }
+        } ?: kotlin.run {
+            Log.w("TAG", "c")
+            onFail(errMsg = "유저 선택 정보를 가져오지 못했습니다")
+        }
     }
 
     private fun initTimer() = with(binding) {
@@ -162,6 +169,7 @@ class HotActivity : AppCompatActivity(), SendUserChoiceCallback {
     }
 
     override fun onSuccess() {
+        Log.w("TAG", "d")
         val intent = Intent(this, VoteCompleteActivity::class.java)
         intent.putExtra("voteInfo", information)
         startActivity(intent)
@@ -169,6 +177,7 @@ class HotActivity : AppCompatActivity(), SendUserChoiceCallback {
     }
 
     override fun onFail(errMsg: String?) {
+        Log.w("TAG", "e")
         Toast.makeText(this, "다시 시도해 주세요 $errMsg", Toast.LENGTH_SHORT).show()
     }
 }

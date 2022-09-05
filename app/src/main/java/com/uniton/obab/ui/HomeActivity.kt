@@ -3,6 +3,7 @@ package com.uniton.obab.ui
 import SpeedyLinearLayoutManager
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,21 +15,21 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
 
     private val sampleList = listOf(
-        R.drawable.ic_food_sample,
-        R.drawable.ic_logo,
-        R.drawable.ic_vote_complete
+        R.drawable.ic_bread,
+        R.drawable.ic_america,
+        R.drawable.ic_spicy
     )
 
     private val sampleList2 = listOf(
-        R.drawable.ic_vote_complete,
-        R.drawable.ic_food_sample,
-        R.drawable.ic_logo
+        R.drawable.ic_cold,
+        R.drawable.ic_noodle,
+        R.drawable.ic_china
     )
 
     private val sampleList3 = listOf(
-        R.drawable.ic_logo,
-        R.drawable.ic_vote_complete,
-        R.drawable.ic_food_sample,
+        R.drawable.ic_hot,
+        R.drawable.ic_japan,
+        R.drawable.ic_korea,
     )
 
     private val carouselAdapter1 = CarouselAdapter(this, sampleList)
@@ -45,6 +46,16 @@ class HomeActivity : AppCompatActivity() {
 
         initRecyclerView()
         initListener()
+        getRoomNum()
+    }
+
+    private fun getRoomNum() {
+        intent?.getStringExtra("roomNo")?.let { roomNum ->
+            val intent = Intent(this, ResultActivity::class.java)
+            intent.putExtra("roomNo", roomNum)
+            startActivity(intent)
+        }
+        Log.w("TAG", "${intent?.getStringExtra("roomNo")}" )
     }
 
     private fun initRecyclerView() = with(binding) {

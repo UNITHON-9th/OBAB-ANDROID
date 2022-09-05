@@ -18,8 +18,6 @@ class CarouselAdapter(
     private var items = initItems
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CarouselHolder {
-        Log.w("TAG", "create view holder")
-
         return CarouselHolder(
             HolderImgItemBinding.inflate(LayoutInflater.from(parent.context), parent, false),
             glide
@@ -27,8 +25,6 @@ class CarouselAdapter(
     }
 
     override fun onBindViewHolder(holder: CarouselHolder, position: Int) {
-        Log.w("TAG", "bind View Holder")
-
         holder.bind(items[position % items.count()])
     }
 

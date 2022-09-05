@@ -1,8 +1,7 @@
-package com.uniton.obab.network.sendChoice
+package com.uniton.obab.network.result
 
 import android.util.Log
-import com.uniton.obab.model.request.UserChoiceRequest
-import com.uniton.obab.model.response.UserChoiceResponse
+import com.uniton.obab.model.response.ResultResponse
 import com.uniton.obab.network.Api
 import com.uniton.obab.network.room.enter.EnterRoomService
 import okhttp3.Interceptor
@@ -13,7 +12,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class SendUserChoiceService(val sendUserChoiceCallback: SendUserChoiceCallback) {
+class ResultService(val resultCallback: ResultCallback) {
     private val headerInterceptor = Interceptor {
         val request = it.request()
             .newBuilder()
@@ -32,24 +31,24 @@ class SendUserChoiceService(val sendUserChoiceCallback: SendUserChoiceCallback) 
         .client(okHttpClient)
         .build()
 
-    fun sendUserChoice(sendUserChoiceRequest: UserChoiceRequest) {
+    fun getResults(roomNo: String) {
         Log.w("TAG", "sendUserChoice")
         val api = retrofit.create(Api::class.java)
-        api.postUserChoice(sendUserChoiceRequest).enqueue(object : Callback<UserChoiceResponse> {
+        api.getResult(roomNo).enqueue(object : Callback<ResultResponse> {
             override fun onResponse(
-                call: Call<UserChoiceResponse>,
-                response: Response<UserChoiceResponse>,
+                call: Call<ResultResponse>,
+                response: Response<ResultResponse>,
             ) {
-                response.body()?.let {
-                    if (it.responseCode == "CM99") {
-                        sendUserChoiceCallback.onFail("CM99")
-                    }
+                response.body()?.let { resultResponse ->
+                    Log.w("TAG", resultResponse.toString())
+                    resultCallback.onSuccess(resultResponse)
+                } ?: kotlin.run {
+                    resultCallback.onFailure("please try again")
                 }
-                sendUserChoiceCallback.onSuccess()
             }
 
-            override fun onFailure(call: Call<UserChoiceResponse>, t: Throwable) {
-                sendUserChoiceCallback.onFail(t.message + " // " + t.cause)
+            override fun onFailure(call: Call<ResultResponse>, t: Throwable) {
+                resultCallback.onFailure(t.message.toString())
             }
 
         })

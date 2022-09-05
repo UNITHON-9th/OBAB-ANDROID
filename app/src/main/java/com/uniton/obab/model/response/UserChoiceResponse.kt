@@ -6,7 +6,5 @@ data class UserChoiceResponse(
     @SerializedName("responseCode")
     val responseCode: String,
     @SerializedName("message")
-    val message: String,
-    @SerializedName("data")
-    val data: Any?,
+    val message: String
 )
